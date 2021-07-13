@@ -26,6 +26,7 @@ class ViewController: NSViewController {
         newView.wantsLayer = true
         newView.layer?.backgroundColor = NSColor.blue.cgColor
         
+        // per stackoverflow
         // "If you set it to false, then the frame is ignored and positioning and size must be fully specified by NSLayoutConstraints.
         //  If you set it to true, then the frame will be translated into constraints by macOS"
         newView.translatesAutoresizingMaskIntoConstraints = false
