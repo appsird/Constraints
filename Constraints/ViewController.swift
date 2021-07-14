@@ -162,19 +162,22 @@ class ViewController: NSViewController {
         newView.heightAnchor.constraint(equalToConstant: 100).isActive = true
     }
     
-    // 6. Using intrinsicContentSize and NSLayoutAnchor
+    // 6. Using intrinsicContentSize and NSLayoutAnchor (desired approach per Paul)
     func type_6() {
         let frame = CGRect(origin: .zero, size: CGSize(width: 100, height: 100))
-        let newView = NSView(frame: frame)
+            let newView = NSView(frame: frame)
 
-        newView.wantsLayer = true
-        newView.layer?.backgroundColor = NSColor.blue.cgColor
-        newView.translatesAutoresizingMaskIntoConstraints = false
-        view.addSubview(newView)
+            newView.wantsLayer = true
+            newView.layer?.backgroundColor = NSColor.blue.cgColor
+            newView.translatesAutoresizingMaskIntoConstraints = false
+            view.addSubview(newView)
 
-        let horizontalConstraint = newView.centerXAnchor.constraint(equalTo: view.centerXAnchor)
-        let verticalConstraint = newView.centerYAnchor.constraint(equalTo: view.centerYAnchor)
-        NSLayoutConstraint.activate([horizontalConstraint, verticalConstraint])
+            view.addConstraints([
+                newView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
+                newView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
+                newView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -20),
+                newView.heightAnchor.constraint(equalToConstant: 100)
+            ])
     }
 
     override func viewDidLoad() {
